@@ -1,0 +1,16 @@
+{
+  "title": "A realm of possibilities",
+  "text": "Its like magic!",
+  "section": [
+    {
+      "title": "Why us?",
+      "content": "TutorWiz provides fast and reliable tutoring services, with tutors just a click away.",
+      "icon": "notes.svg"
+    },
+    {
+      "title": "Potential Unlocked",
+      "content": "We offer personalized tutoring that empowers students to excel in their academic journey.",
+      "icon": "notes.svg"
+    }
+  ]
+}

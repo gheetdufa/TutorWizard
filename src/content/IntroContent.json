@@ -1,0 +1,13 @@
+{
+  "title": "Welcome to your online tutoring portal!",
+  "text": "A student-powered tutoring portal fostering peer-to-peer learning and collaboration",
+  "button": [
+    {
+      "title": "Explore"
+    },
+    {
+      "title": "Learn more",
+      "color": "#fff"
+    }
+  ]
+}
