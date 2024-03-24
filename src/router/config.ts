@@ -4,6 +4,13 @@ const routes = [
     exact: true,
     component: "Home",
   },
+
+{
+  path: '/Map',
+  component: 'Map',
+  exact: true,
+}
+
 ];
 
 export default routes;

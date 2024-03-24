@@ -12,7 +12,7 @@ const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
 
-const Home = () => {
+const index = () => {
   return (
     <Container>
       <ScrollToTop />
@@ -21,7 +21,7 @@ const Home = () => {
   title={IntroContent.title}
   content={IntroContent.text}
   button={IntroContent.button}
-  icon="Wizard.svg" // Path to your PNG icon
+  icon="Wizard.svg" 
   id="intro"
 />
       <MiddleBlock
@@ -34,21 +34,21 @@ const Home = () => {
         title={AboutContent.title}
         content={AboutContent.text}
         section={AboutContent.section}
-        icon="stars.svg" // Path to your PNG icon
+        icon="stars.svg" 
         id="about"
       />
       <ContentBlock
         type="right"
         title={MissionContent.title}
         content={MissionContent.text}
-        icon="books.svg" // Path to your PNG icon
+        icon="books.svg" 
         id="mission"
       />
       <ContentBlock
         type="left"
         title={ProductContent.title}
         content={ProductContent.text}
-        icon="wiazardbook.svg" // Path to your PNG icon
+        icon="wiazardbook.svg" 
         id="product"
       />
       <Contact
@@ -60,4 +60,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default index;

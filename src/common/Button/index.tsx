@@ -1,5 +1,7 @@
 import { StyledButton } from "./styles";
 import { ButtonProps } from "../types";
+import React, { useState, useEffect } from 'react';
+
 
 export const Button = ({
   color,
