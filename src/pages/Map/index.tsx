@@ -9,7 +9,12 @@ const containerStyle = {
 
 const center = {
   lat: 40.50008,
-  lng: 74.44741,
+  lng: -74.44741,
+};
+
+const customMarker = {
+  url: 'https://cdn-icons-png.flaticon.com/512/1907/1907908.png', // Replace 'marker-url.png' with the URL of your custom marker icon
+  scaledSize: new window.google.maps.Size(40, 40) // Adjust the size of the marker here (width, height)
 };
 
 // Extended points with name and subject
@@ -79,7 +84,7 @@ const MyComponent: React.FC = () => {
             }}
           >
             {tutors.map((tutor) => (
-              <MarkerF key={tutor.tutorID} position={{ lat: tutor.lat, lng: tutor.lng }} />
+              <MarkerF key={tutor.tutorID} position={{ lat: tutor.lat, lng: tutor.lng }} options={{icon: customMarker}} />
             ))}
           </GoogleMap>
           <div style={{ marginLeft: '20px', width: '300px', flexShrink: 0 }}>
