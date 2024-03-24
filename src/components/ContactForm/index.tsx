@@ -1,4 +1,4 @@
-import { Row, Col } from "antd";
+import React from 'react';
 import { withTranslation } from "react-i18next";
 import { Slide, Zoom } from "react-awesome-reveal";
 import { ContactProps, ValidationTypeProps } from "./types";
@@ -9,12 +9,18 @@ import Block from "../Block";
 import Input from "../../common/Input";
 import TextArea from "../../common/TextArea";
 import { ContactContainer, FormGroup, Span, ButtonContainer } from "./styles";
-import React, { useState, useEffect } from 'react';
+import { Col, Row } from 'antd';
 
 const Contact = ({ title, content, id, t }: ContactProps) => {
-  const { values, errors, handleChange, handleSubmit } = useForm(
-    validate
-  ) as any;
+  const { values, errors, handleChange, handleSubmit } = useForm(validate) as any;
+
+  const campuses = [
+    { id: '', name: 'Select your campus' }, // Placeholder option
+    { id: 'campus1', name: 'College Avenue' },
+    { id: 'campus2', name: 'Livingston' },
+    { id: 'campus3', name: 'Busch' },
+    { id: 'campus4', name: 'Cook/Douglas' },
+  ];
 
   const ValidationType = ({ type }: ValidationTypeProps) => {
     const ErrorMessage = errors[type];
@@ -23,6 +29,12 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
         <Span erros={errors[type]}>{ErrorMessage}</Span>
       </Zoom>
     );
+  };
+
+  // Adjust handleChange to handle select dropdown if necessary
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    // Call the existing handleChange function or adjust logic as needed
+    handleChange(e);
   };
 
   return (
@@ -40,7 +52,7 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
                 <Input
                   type="text"
                   name="name"
-                  placeholder="Your Name"
+                  placeholder={t("Your Name")}
                   value={values.name || ""}
                   onChange={handleChange}
                 />
@@ -50,15 +62,24 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
                 <Input
                   type="text"
                   name="email"
-                  placeholder="Your Email"
+                  placeholder={t("Your Email")}
                   value={values.email || ""}
                   onChange={handleChange}
                 />
                 <ValidationType type="email" />
               </Col>
               <Col span={24}>
+                {/* Dropdown for campus selection */}
+                <select name="campus" onChange={handleSelectChange} value={values.campus || ''}>
+                  {campuses.map(campus => (
+                    <option key={campus.id} value={campus.id}>{campus.name}</option>
+                  ))}
+                </select>
+                <ValidationType type="campus" />
+              </Col>
+              <Col span={24}>
                 <TextArea
-                  placeholder="Your Message"
+                  placeholder={t("Your Message")}
                   value={values.message || ""}
                   name="message"
                   onChange={handleChange}
@@ -66,7 +87,10 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
                 <ValidationType type="message" />
               </Col>
               <ButtonContainer>
-                <Button name="submit">{t("Submit")}</Button>
+                <Button name="primary">{t("Sign Up As Student")}</Button>
+              </ButtonContainer>
+              <ButtonContainer>
+                <Button name="submit">{t("Sign Up As Tutor")}</Button>
               </ButtonContainer>
             </FormGroup>
           </Slide>
